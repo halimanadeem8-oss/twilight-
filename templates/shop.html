@@ -1,0 +1,17 @@
+{% extends "store/base.html" %}
+{% block title %}Shop the Magic | Twilight Pins{% endblock %}
+{% block content %}
+<section class="page-hero"><p class="eyebrow">Find your favourite</p><h1>Shop the Magic ✦</h1><p>Little charms, starry details, and a sprinkle of purple.</p></section>
+<section class="shop-layout section-shell">
+  <form class="shop-filters" method="get">
+    <input type="search" name="q" placeholder="Search pins..." value="{{ search_query }}">
+    <select name="category"><option value="">All categories</option>{% for cat in categories %}<option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>{% endfor %}</select>
+    <button class="button" type="submit">Search</button>
+    <a class="text-link" href="{% url 'store:shop' %}">Clear filters</a>
+  </form>
+  <div class="product-grid">
+    {% for product in products %}{% include "store/partials/product_card.html" with product=product %}{% empty %}
+    <div class="empty-state"><h3>No pins found ✧</h3><p>Try another search or category.</p></div>{% endfor %}
+  </div>
+</section>
+{% endblock %}

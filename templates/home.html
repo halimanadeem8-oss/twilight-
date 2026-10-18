@@ -1,0 +1,47 @@
+{% extends "store/base.html" %}
+{% block title %}Twilight Pins | A little magic in every pin{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-stars">✦　✧　✦　⋆　✧　✦　⋆</div>
+  <div class="hero-copy">
+    <p class="eyebrow">A magical little boutique</p>
+    <h1>Twilight Pins</h1>
+    <p class="hero-tagline">A little magic in every pin.</p>
+    <p class="hero-description">Cute, unique safety pins inspired by Twilight Sparkle, friendship, books, and the magic of Equestria.</p>
+    <a class="button button-pink" href="{% url 'store:shop' %}">✦ Shop the Magic <span>→</span></a>
+  </div>
+  <div class="hero-art" aria-label="Decorative princess pony and human-inspired silhouettes">
+    <div class="moon"></div><div class="castle">♜</div>
+    <div class="pony-art"><span class="pony-horn">✦</span><span class="pony-eye">●</span><span class="pony-mane"></span><span class="pony-mark">✦</span></div>
+    <div class="human-art"><div class="human-hair"></div><div class="human-face"><span>•</span><span>•</span></div><div class="human-body"><span>✦</span></div><div class="human-book">📖</div></div>
+    <span class="floating-star star-one">✦</span><span class="floating-star star-two">✧</span><span class="floating-star star-three">✦</span>
+  </div>
+</section>
+
+<section class="category-row" aria-label="Shop categories">
+  <a class="category" href="{% url 'store:shop' %}?category=Twilight%27s%20Magic"><span>✦</span><b>Twilight's Magic</b></a>
+  <a class="category" href="{% url 'store:shop' %}?category=Book%20Lover%20Pins"><span>📚</span><b>Book Lover Pins</b></a>
+  <a class="category" href="{% url 'store:shop' %}?category=Princess%20Collection"><span>♛</span><b>Princess Collection</b></a>
+  <a class="category" href="{% url 'store:shop' %}?category=Celestial%20Designs"><span>☾</span><b>Celestial Designs</b></a>
+  <a class="category" href="{% url 'store:shop' %}?category=Cute%20%26%20Pastel"><span>♡</span><b>Cute & Pastel</b></a>
+</section>
+
+<section class="featured section-shell">
+  <div class="section-heading"><span>✦</span><div><h2>Featured Pins</h2><p>Handpicked with love (and a little bit of magic).</p></div><span>✦</span></div>
+  <div class="product-grid">
+    {% for product in products %}
+      {% include "store/partials/product_card.html" with product=product %}
+    {% empty %}
+      <div class="empty-state"><h3>Your magical shelf is waiting!</h3><p>Add demo products using the setup instructions, then refresh this page.</p><a class="button" href="{% url 'store:shop' %}">Visit the shop</a></div>
+    {% endfor %}
+  </div>
+  <div class="center"><a class="button button-outline" href="{% url 'store:shop' %}">Explore all pins →</a></div>
+</section>
+
+<section class="benefits">
+  <div><span>✦</span><p><b>Unique Designs</b><small>Inspired by magical friendship.</small></p></div>
+  <div><span>♥</span><p><b>Made with Care</b><small>Thoughtful little details.</small></p></div>
+  <div><span>✧</span><p><b>Demo Shipping</b><small>Across the land of imagination.</small></p></div>
+  <div><span>♡</span><p><b>Made with Love</b><small>Because you deserve a little magic.</small></p></div>
+</section>
+{% endblock %}

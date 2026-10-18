@@ -1,0 +1,5 @@
+{% extends "store/base.html" %}
+{% block title %}Order Confirmed | Twilight Pins{% endblock %}
+{% block content %}
+<section class="success-card section-shell"><div class="success-star">✦</div><p class="eyebrow">A little magic is on its way</p><h1>Demo order complete!</h1><p>Thank you, {{ order.name }}. This is a demonstration only; no real order or payment was created.</p><div class="order-receipt">{% for item in order.items %}<p><span>{{ item.name }} × {{ item.quantity }}</span><b>PKR {{ item.line_total }}</b></p>{% endfor %}<hr><p class="summary-total"><span>Demo total</span><b>PKR {{ order.total }}</b></p></div><a class="button button-pink" href="{% url 'store:shop' %}">Keep exploring ✦</a></section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "store/base.html" %}
+{% block title %}Demo Checkout | Twilight Pins{% endblock %}
+{% block content %}
+<section class="page-hero"><p class="eyebrow">One last magical step</p><h1>Demo Checkout ✦</h1><p>This is a practice checkout. No payment is collected and no real order is shipped.</p></section>
+<section class="checkout-layout section-shell">
+  <form class="checkout-form" method="post">{% csrf_token %}<h2>Delivery details</h2>
+    <label>Full name<input name="name" autocomplete="name" required></label>
+    <label>Email address<input type="email" name="email" autocomplete="email" required></label>
+    <label>Demo delivery address<textarea name="address" rows="3" required></textarea></label>
+    <div class="demo-notice">🔒 Demo mode: please don't enter sensitive personal or payment information.</div>
+    <button class="button button-pink full-button" type="submit">Place demo order ✦</button>
+  </form>
+  <aside class="checkout-summary"><h2>Your pins</h2>{% for item in items %}<p><span>{{ item.product.name }} × {{ item.quantity }}</span><b>PKR {{ item.line_total }}</b></p>{% endfor %}<hr><p class="summary-total"><span>Total</span><b>PKR {{ total }}</b></p></aside>
+</section>
+{% endblock %}
